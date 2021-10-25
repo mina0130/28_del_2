@@ -1,6 +1,6 @@
 import java.util.*;
 import java.util.Random;
-public class main {
+public class Matador {
     public static void main(String[] args) {
 
         boolean player1turn, player2turn, won=false;
@@ -117,10 +117,10 @@ public class main {
                 break;
         }
     }
-
-
-
-
+        if(player1turn)
+            System.out.println("Player 1 won");
+        else
+            System.out.println("Player 2 won");
 
 
     }}
