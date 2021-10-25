@@ -1,9 +1,15 @@
-public class cdio2færdig {
+import java.util.*;
+import java.util.Random;
+public class Matador {
     public static void main(String[] args) {
 
         boolean player1turn, player2turn, won=false;
-        int player1balance=0, player2balance, player1position, player2position, sum=2, count;
+        int player1balance=0, player2balance=0, sum, count, num1, num2;
         String title, subtitle, head;
+        Scanner scanner = new Scanner(System.in);
+        String player1name, player2name;
+        Random dice2= new Random();
+        Random dice1= new Random();
 
 
         //Laver brættet
@@ -51,10 +57,46 @@ public class cdio2færdig {
             count++;
 
         }
+//players
+        System.out.println("input player 1 name");
+        player1name=scanner.next();
+        player.addPlayer(player1name, 1000);
+        System.out.println("input player 2 name");
+        player2name=scanner.next();
+        while(player1name.equals(player2name)){
+            System.out.println("Please input a unique name for each player");
+            System.out.println("Input player 2 name");
+            player2name=scanner.next();
+        }
+        player.addPlayer(player2name, 1000);
 
+        //game flow
+        System.out.println("Which player starts? (1 or 2)");
+        int start = scanner.nextInt();
+        player1turn= start == 1;
+        while(!won){
+            if(player1turn)
+                System.out.println(player1name + "'s turn");
+            else
+                System.out.println(player2name + "'s turn");
+
+// dice
+            int thrower=1;
+            while(thrower!=0){
+                System.out.println("enter 0 to throw dice");
+                thrower=scanner.nextInt();
+            }
+            num1=1+dice1.nextInt(6);
+            num2=1+dice2.nextInt(6);
+            System.out.println("dice 1: " + num1);
+            System.out.println("dice 2: " + num2);
+            sum=num1+num2;
+            System.out.println("The sum of your throws is:" + sum);
 
         // bank
-        switch(sum){
+
+            if(player1turn){
+                switch(sum){
             case 2: player1balance=bank.add(player1balance, 250);
                 break;
             case 3: player1balance=bank.deduct(player1balance, 100);
@@ -77,12 +119,33 @@ public class cdio2færdig {
                 break;
         }
     }
+            if(!player1turn){
+
+                switch (sum) {
+                    case 2 -> player2balance = bank.add(player2balance, 250);
+                    case 3 -> player2balance = bank.deduct(player2balance, 100);
+                    case 4 -> player2balance = bank.add(player2balance, 100);
+                    case 5 -> player2balance = bank.deduct(player2balance, 20);
+                    case 6 -> player2balance = bank.add(player2balance, 180);
+                    case 8 -> player2balance = bank.deduct(player2balance, 70);
+                    case 9 -> player2balance = bank.add(player2balance, 70);
+                    case 10 -> player2balance = bank.deduct(player2balance, 80);
+                    case 11 -> player2balance = bank.deduct(player2balance, 50);
+                    case 12 -> player2balance = bank.add(player2balance, 650);
+                }
+                System.out.println(board.getDescriptionText(sum-2));
+                System.out.println(board.getSubText(sum-2));
+                System.out.println(player2name + "'s balance is now " + player2balance);
+                if(player2balance>3000)
+                    won=true;
+            }
+        }
+        if(player1turn)
+            System.out.println("Player 1 won");
+        else
+            System.out.println("Player 2 won");
 
 
-
-
-
-
-    }
+    }}
 
 
