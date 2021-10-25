@@ -3,7 +3,7 @@ import java.util.Random;
 public class Matador {
     public static void main(String[] args) {
 
-        boolean player1turn, player2turn, won=false;
+        boolean player1turn, won=false;
         int player1balance=0, player2balance=0, sum, count, num1, num2;
         String title, subtitle, head;
         Scanner scanner = new Scanner(System.in);
@@ -118,6 +118,12 @@ public class Matador {
             case 12: player1balance=bank.add(player1balance, 650);
                 break;
         }
+                System.out.println(board.getDescriptionText(sum-2));
+                System.out.println(board.getSubText(sum-2));
+                System.out.println(player1name + "'s balance is now " + player1balance);
+
+                if(player1balance>3000)
+                    won=true;
     }
             if(!player1turn){
 
@@ -139,6 +145,8 @@ public class Matador {
                 if(player2balance>3000)
                     won=true;
             }
+            if(!won && sum!=10){
+                player1turn= !player1turn;}
         }
         if(player1turn)
             System.out.println("Player 1 won");
