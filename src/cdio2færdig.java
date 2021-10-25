@@ -1,9 +1,12 @@
+import java.util.*;
 public class cdio2færdig {
     public static void main(String[] args) {
 
         boolean player1turn, player2turn, won=false;
         int player1balance=0, player2balance, player1position, player2position, sum=2, count;
         String title, subtitle, head;
+        Scanner scanner = new Scanner(System.in);
+        String player1name, player2name;
 
 
         //Laver brættet
@@ -51,6 +54,19 @@ public class cdio2færdig {
             count++;
 
         }
+//players
+        System.out.println("input player 1 name");
+        player1name=scanner.next();
+        player.addPlayer(player1name, 1000);
+        System.out.println("input player 2 name");
+        player2name=scanner.next();
+        while(player1name.equals(player2name)){
+            System.out.println("Please input a unique name for each player");
+            System.out.println("Input player 2 name");
+            player2name=scanner.next();
+        }
+        player.addPlayer(player2name, 1000);
+
 
 
         // bank
