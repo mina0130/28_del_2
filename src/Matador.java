@@ -94,7 +94,9 @@ public class Matador {
             System.out.println("The sum of your throws is:" + sum);
 
         // bank
-        switch(sum){
+
+            if(player1turn){
+                switch(sum){
             case 2: player1balance=bank.add(player1balance, 250);
                 break;
             case 3: player1balance=bank.deduct(player1balance, 100);
@@ -117,6 +119,27 @@ public class Matador {
                 break;
         }
     }
+            if(!player1turn){
+
+                switch (sum) {
+                    case 2 -> player2balance = bank.add(player2balance, 250);
+                    case 3 -> player2balance = bank.deduct(player2balance, 100);
+                    case 4 -> player2balance = bank.add(player2balance, 100);
+                    case 5 -> player2balance = bank.deduct(player2balance, 20);
+                    case 6 -> player2balance = bank.add(player2balance, 180);
+                    case 8 -> player2balance = bank.deduct(player2balance, 70);
+                    case 9 -> player2balance = bank.add(player2balance, 70);
+                    case 10 -> player2balance = bank.deduct(player2balance, 80);
+                    case 11 -> player2balance = bank.deduct(player2balance, 50);
+                    case 12 -> player2balance = bank.add(player2balance, 650);
+                }
+                System.out.println(board.getDescriptionText(sum-2));
+                System.out.println(board.getSubText(sum-2));
+                System.out.println(player2name + "'s balance is now " + player2balance);
+                if(player2balance>3000)
+                    won=true;
+            }
+        }
         if(player1turn)
             System.out.println("Player 1 won");
         else
