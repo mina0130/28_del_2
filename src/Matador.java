@@ -85,6 +85,12 @@ public class Matador {
         //game flow
         System.out.println("Which player starts? (1 or 2)");
         int start = scanner.nextInt();
+
+        while(start!=1 && start!=2){
+            System.out.println("please input either 1 or 2");
+            start = scanner.nextInt();
+        }
+
         player1turn= start == 1;
         while(!won){
             if(player1turn)
@@ -97,6 +103,10 @@ public class Matador {
             while(thrower!=0){
                 System.out.println("enter 0 to throw dice");
                 thrower=scanner.nextInt();
+                while(thrower!=0){
+                    System.out.println("enter 0 to throw dice");
+                    thrower=scanner.nextInt();
+                }
             }
             num1=1+dice1.nextInt(6);
             num2=1+dice2.nextInt(6);
