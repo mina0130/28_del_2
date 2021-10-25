@@ -1,6 +1,6 @@
+package main.java;
 
-
-    public class bank {
+public class bank {
         int current, modification;
         static int newTotal;
 

@@ -1,8 +1,13 @@
+package main.java;
+
 import java.util.*;
 import java.util.Random;
+import gui_main.GUI;
+
 public class Matador {
     public static void main(String[] args) {
 
+        GUI gui = new GUI();
         boolean player1turn, won=false;
         int player1balance=0, player2balance=0, sum, count, num1, num2;
         String title, subtitle, head;
@@ -10,6 +15,7 @@ public class Matador {
         String player1name, player2name;
         Random dice2= new Random();
         Random dice1= new Random();
+
 
 
         //Laver brættet
@@ -103,6 +109,7 @@ public class Matador {
             System.out.println("dice 1: " + num1);
             System.out.println("dice 2: " + num2);
             sum=num1+num2;
+            gui.setDice(num1,num2);
             System.out.println("The sum of your throws is:" + sum);
 
         // bank

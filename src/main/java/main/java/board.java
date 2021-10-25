@@ -1,4 +1,9 @@
-    public class board {
+package main.java;
+
+import gui_fields.GUI_Field;
+
+public class board {
+        GUI_Field[] fields = new GUI_Field[13];
         int fieldnumber;
         String playertitle;
         static String[] title= new String[11];
