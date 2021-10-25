@@ -3,7 +3,7 @@ public class cdio2færdig {
     public static void main(String[] args) {
 
         boolean player1turn, player2turn, won=false;
-        int player1balance=0, player2balance, player1position, player2position, sum=2, count;
+        int player1balance=0, player2balance=0, sum=2, count;
         String title, subtitle, head;
         Scanner scanner = new Scanner(System.in);
         String player1name, player2name;
@@ -67,6 +67,16 @@ public class cdio2færdig {
         }
         player.addPlayer(player2name, 1000);
 
+        //game flow
+        System.out.println("Which player starts? (1 or 2)");
+        int start = scanner.nextInt();
+        player1turn= start == 1;
+        while(!won){
+            if(player1turn)
+                System.out.println(player1name + "'s turn");
+            else
+                System.out.println(player2name + "'s turn");
+
 
 
         // bank
@@ -99,6 +109,6 @@ public class cdio2færdig {
 
 
 
-    }
+    }}
 
 
