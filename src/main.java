@@ -1,12 +1,15 @@
 import java.util.*;
-public class cdio2færdig {
+import java.util.Random;
+public class main {
     public static void main(String[] args) {
 
         boolean player1turn, player2turn, won=false;
-        int player1balance=0, player2balance=0, sum=2, count;
+        int player1balance=0, player2balance=0, sum, count, num1, num2;
         String title, subtitle, head;
         Scanner scanner = new Scanner(System.in);
         String player1name, player2name;
+        Random dice2= new Random();
+        Random dice1= new Random();
 
 
         //Laver brættet
@@ -77,7 +80,18 @@ public class cdio2færdig {
             else
                 System.out.println(player2name + "'s turn");
 
-
+// dice
+            int thrower=1;
+            while(thrower!=0){
+                System.out.println("enter 0 to throw dice");
+                thrower=scanner.nextInt();
+            }
+            num1=1+dice1.nextInt(6);
+            num2=1+dice2.nextInt(6);
+            System.out.println("dice 1: " + num1);
+            System.out.println("dice 2: " + num2);
+            sum=num1+num2;
+            System.out.println("The sum of your throws is:" + sum);
 
         // bank
         switch(sum){
