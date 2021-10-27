@@ -114,7 +114,8 @@ public class Matador {
                 int thrower = 1;
                 while (thrower != 0) {
                     System.out.println("enter 0 to throw dice");
-                    thrower = scanner.nextInt();
+                    try{thrower = scanner.nextInt();}
+                    catch(InputMismatchException e){System.exit(0);}
                 }
                 num1 = 1 + dice1.nextInt(6);
                 num2 = 1 + dice2.nextInt(6);
