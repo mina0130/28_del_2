@@ -4,7 +4,7 @@ public class Matador {
     public static void main(String[] args) {
 
         boolean player1turn, won=false;
-        int player1balance=0, player2balance=0, sum, count, num1, num2;
+        int player1balance=0, player2balance=0, sum, count, num1, num2, start=0;
         String title, subtitle, head;
         Scanner scanner = new Scanner(System.in);
         String player1name, player2name;
@@ -84,7 +84,15 @@ public class Matador {
 
         //game flow
         System.out.println("Which player starts? (1 or 2)");
-        int start = scanner.nextInt();
+        try{
+        start = scanner.nextInt();}
+        catch(InputMismatchException e){
+            System.out.println("Please enter either 1 or 2");
+        }
+        while(start!=1 && start!=2) {
+            System.out.println("Please enter either 1 or 2");
+            start = scanner.nextInt();
+        }
         player1turn= start == 1;
         while(!won){
             if(player1turn)
