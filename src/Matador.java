@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.util.Random;
 public class Matador {
@@ -83,87 +84,97 @@ public class Matador {
         player.addPlayer(player2name, 1000);
 
         //game flow
-        System.out.println("Which player starts? (1 or 2)");
-        try{
-        start = scanner.nextInt();}
-        catch(InputMismatchException e){
-            System.out.println("Please enter either 1 or 2");
-        }
-        while(start!=1 && start!=2) {
-            System.out.println("Please enter either 1 or 2");
+        System.out.println("Which player starts? Please enter either 1 or 2");
+        try {
             start = scanner.nextInt();
         }
-        player1turn= start == 1;
-        while(!won){
-            if(player1turn)
-                System.out.println(player1name + "'s turn");
-            else
-                System.out.println(player2name + "'s turn");
+        catch(InputMismatchException e){
+            System.out.println("you entered an invalid input, the process is terminating");
+            System.exit(0);
+        }
+        while (start!= 1 && start != 2) {
+            try{
+            start = scanner.nextInt();}
+            catch(InputMismatchException e){
+                System.out.println("you entered an invalid input, the process is terminating");
+                System.exit(0);
+            }
+
+        }
+
+
+            player1turn = start == 1;
+            while (!won) {
+                if (player1turn)
+                    System.out.println(player1name + "'s turn");
+                else
+                    System.out.println(player2name + "'s turn");
 
 // dice
-            int thrower=1;
-            while(thrower!=0){
-                System.out.println("enter 0 to throw dice");
-                thrower=scanner.nextInt();
-            }
-            num1=1+dice1.nextInt(6);
-            num2=1+dice2.nextInt(6);
-            System.out.println("dice 1: " + num1);
-            System.out.println("dice 2: " + num2);
-            sum=num1+num2;
-            System.out.println("The sum of your throws is:" + sum);
-
-        // bank
-
-            if(player1turn){
-                switch (sum) {
-                    case 2 -> player1balance = bank.add(player1balance, 250);
-                    case 3 -> player1balance = bank.deduct(player1balance, 100);
-                    case 4 -> player1balance = bank.add(player1balance, 100);
-                    case 5 -> player1balance = bank.deduct(player1balance, 20);
-                    case 6 -> player1balance = bank.add(player1balance, 180);
-                    case 8 -> player1balance = bank.deduct(player1balance, 70);
-                    case 9 -> player1balance = bank.add(player1balance, 70);
-                    case 10 -> player1balance = bank.deduct(player1balance, 80);
-                    case 11 -> player1balance = bank.deduct(player1balance, 50);
-                    case 12 -> player1balance = bank.add(player1balance, 650);
+                int thrower = 1;
+                while (thrower != 0) {
+                    System.out.println("enter 0 to throw dice");
+                    thrower = scanner.nextInt();
                 }
-                System.out.println(board.getDescriptionText(sum-2));
-                System.out.println(board.getSubText(sum-2));
-                System.out.println(player1name + "'s balance is now " + player1balance);
+                num1 = 1 + dice1.nextInt(6);
+                num2 = 1 + dice2.nextInt(6);
+                System.out.println("dice 1: " + num1);
+                System.out.println("dice 2: " + num2);
+                sum = num1 + num2;
+                System.out.println("The sum of your throws is:" + sum);
 
-                if(player1balance>3000)
-                    won=true;
-    }
-            if(!player1turn){
+                // bank
 
-                switch (sum) {
-                    case 2 -> player2balance = bank.add(player2balance, 250);
-                    case 3 -> player2balance = bank.deduct(player2balance, 100);
-                    case 4 -> player2balance = bank.add(player2balance, 100);
-                    case 5 -> player2balance = bank.deduct(player2balance, 20);
-                    case 6 -> player2balance = bank.add(player2balance, 180);
-                    case 8 -> player2balance = bank.deduct(player2balance, 70);
-                    case 9 -> player2balance = bank.add(player2balance, 70);
-                    case 10 -> player2balance = bank.deduct(player2balance, 80);
-                    case 11 -> player2balance = bank.deduct(player2balance, 50);
-                    case 12 -> player2balance = bank.add(player2balance, 650);
+                if (player1turn) {
+                    switch (sum) {
+                        case 2 -> player1balance = bank.add(player1balance, 250);
+                        case 3 -> player1balance = bank.deduct(player1balance, 100);
+                        case 4 -> player1balance = bank.add(player1balance, 100);
+                        case 5 -> player1balance = bank.deduct(player1balance, 20);
+                        case 6 -> player1balance = bank.add(player1balance, 180);
+                        case 8 -> player1balance = bank.deduct(player1balance, 70);
+                        case 9 -> player1balance = bank.add(player1balance, 70);
+                        case 10 -> player1balance = bank.deduct(player1balance, 80);
+                        case 11 -> player1balance = bank.deduct(player1balance, 50);
+                        case 12 -> player1balance = bank.add(player1balance, 650);
+                    }
+                    System.out.println(board.getDescriptionText(sum - 2));
+                    System.out.println(board.getSubText(sum - 2));
+                    System.out.println(player1name + "'s balance is now " + player1balance);
+
+                    if (player1balance > 3000)
+                        won = true;
                 }
-                System.out.println(board.getDescriptionText(sum-2));
-                System.out.println(board.getSubText(sum-2));
-                System.out.println(player2name + "'s balance is now " + player2balance);
-                if(player2balance>3000)
-                    won=true;
+                if (!player1turn) {
+
+                    switch (sum) {
+                        case 2 -> player2balance = bank.add(player2balance, 250);
+                        case 3 -> player2balance = bank.deduct(player2balance, 100);
+                        case 4 -> player2balance = bank.add(player2balance, 100);
+                        case 5 -> player2balance = bank.deduct(player2balance, 20);
+                        case 6 -> player2balance = bank.add(player2balance, 180);
+                        case 8 -> player2balance = bank.deduct(player2balance, 70);
+                        case 9 -> player2balance = bank.add(player2balance, 70);
+                        case 10 -> player2balance = bank.deduct(player2balance, 80);
+                        case 11 -> player2balance = bank.deduct(player2balance, 50);
+                        case 12 -> player2balance = bank.add(player2balance, 650);
+                    }
+                    System.out.println(board.getDescriptionText(sum - 2));
+                    System.out.println(board.getSubText(sum - 2));
+                    System.out.println(player2name + "'s balance is now " + player2balance);
+                    if (player2balance > 3000)
+                        won = true;
+                }
+                if (!won && sum != 10) {
+                    player1turn = !player1turn;
+                }
             }
-            if(!won && sum!=10){
-                player1turn= !player1turn;}
-        }
-        if(player1turn)
-            System.out.println("Player 1 won");
-        else
-            System.out.println("Player 2 won");
+            if (player1turn)
+                System.out.println("Player 1 won");
+            else
+                System.out.println("Player 2 won");
 
 
-    }}
+        }}
 
 
