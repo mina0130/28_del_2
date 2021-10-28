@@ -11,6 +11,7 @@ public class Matador {
         String player1name, player2name;
         Random dice2= new Random();
         Random dice1= new Random();
+        int testcounter=0;
 
 
         //Laver brættet
@@ -168,11 +169,15 @@ public class Matador {
                 if (!won && sum != 10) {
                     player1turn = !player1turn;
                 }
+                if(player1balance==0 || player2balance==0){
+                    testcounter++;
+                }
             }
             if (player1turn)
                 System.out.println("Player 1 won");
             else
                 System.out.println("Player 2 won");
+            System.out.print(testcounter);
 
 
         }}
